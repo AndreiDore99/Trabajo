@@ -47,3 +47,33 @@ class Conector:
             print(f"Error al crear la base de datos: {e}")
         finally:
             cursor.close()
+
+    def create_table_usuarios(self):
+        try:
+            temp_connection = mysql.connector.connect(
+                host=self.host,
+                user=self.user,
+                password=self.password
+            )
+            cursor = temp_connection.cursor()
+            cursor.execute(propiedades.CREACION_TABLA_USUARIOS)
+            cursor.close()
+            temp_connection.close()
+            print(f"Tabla 'usuarios' creada con éxito en la base de datos '{propiedades.DB_NAME}'.")
+        except Error as e:
+            print(f"Error al crear la tabla: {e}")
+            
+    def create_table_administradores(self):
+        try:
+            temp_connection = mysql.connector.connect(
+                host=self.host,
+                user=self.user,
+                password=self.password
+            )
+            cursor = temp_connection.cursor()
+            cursor.execute(propiedades.CREACION_TABLA_ADMINISTRADORES)
+            cursor.close()
+            temp_connection.close()
+            print(f"Tabla 'administradores' creada con éxito en la base de datos '{propiedades.DB_NAME}'.")
+        except Error as e:
+            print(f"Error al crear la tabla: {e}")
