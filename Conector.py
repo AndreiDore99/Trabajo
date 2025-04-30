@@ -1,6 +1,7 @@
 import mysql.connector
 from mysql.connector import Error
 import Propiedades as propiedades
+from print_color import print
 # Configuración de la conexión
 class Conector:
     def __init__(self):
@@ -20,15 +21,15 @@ class Conector:
                 database=self.database
             )
             if self.connection.is_connected():
-                print("Conexión exitosa a la base de datos.")
+                print("Conexión exitosa a la base de datos.",tag='success', tag_color='green', color='white')
         except Error as e:
-            print(f"Error al conectar a MySQL: {e}")
+            print(f"Error al conectar a MySQL: {e}",tag='failure', tag_color='red', color='magenta')
             self.connection = None
 
     def disconnect(self):
         if self.connection and self.connection.is_connected():
             self.connection.close()
-            print("Conexión cerrada.")
+            print("Conexión cerrada.",tag='success', tag_color='green', color='white')
     
     def create_database(self):
         try:
@@ -42,9 +43,9 @@ class Conector:
             cursor.close()
             temp_connection.close()
            
-            print(f"Base de datos '{propiedades.DB_NAME}' creada con éxito.")
+            print(f"Base de datos '{propiedades.DB_NAME}' creada con éxito.",tag='success', tag_color='green', color='white')
         except Error as e:
-            print(f"Error al crear la base de datos: {e}")
+            print(f"Error al crear la base de datos: {e}",tag='failure', tag_color='red', color='magenta')
         finally:
             cursor.close()
 
@@ -59,9 +60,9 @@ class Conector:
             cursor.execute(propiedades.CREACION_TABLA_USUARIOS)
             cursor.close()
             temp_connection.close()
-            print(f"Tabla 'usuarios' creada con éxito en la base de datos '{propiedades.DB_NAME}'.")
+            print(f"Tabla 'usuarios' creada con éxito en la base de datos '{propiedades.DB_NAME}'.",tag='success', tag_color='green', color='white')
         except Error as e:
-            print(f"Error al crear la tabla: {e}")
+            print(f"Error al crear la tabla: {e}",tag='failure', tag_color='red', color='magenta')
             
     def create_table_administradores(self):
         try:
@@ -74,6 +75,6 @@ class Conector:
             cursor.execute(propiedades.CREACION_TABLA_ADMINISTRADORES)
             cursor.close()
             temp_connection.close()
-            print(f"Tabla 'administradores' creada con éxito en la base de datos '{propiedades.DB_NAME}'.")
+            print(f"Tabla 'administradores' creada con éxito en la base de datos '{propiedades.DB_NAME}'.",tag='success', tag_color='green', color='white')
         except Error as e:
-            print(f"Error al crear la tabla: {e}")
+            print(f"Error al crear la tabla: {e}",tag='failure', tag_color='red', color='magenta')
