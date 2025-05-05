@@ -1,6 +1,6 @@
 import mysql.connector
 from mysql.connector import Error
-import Propiedades as propiedades
+import src.Propiedades as propiedades
 from print_color import print
 # Configuración de la conexión
 class Conector:
@@ -78,3 +78,35 @@ class Conector:
             print(f"Tabla 'administradores' creada con éxito en la base de datos '{propiedades.DB_NAME}'.",tag='success', tag_color='green', color='white')
         except Error as e:
             print(f"Error al crear la tabla: {e}",tag='failure', tag_color='red', color='magenta')
+
+    def create_admin_user(self, nombre_usuario, contrasena):
+        try:
+            cursor = self.connection.cursor()
+            sql = propiedades.CREACION_ADMIN
+            val = (nombre_usuario, contrasena)
+            cursor.execute(sql, val)
+            self.connection.commit()
+            print(f"Administrador '{nombre_usuario}' creado con éxito.",tag='success', tag_color='green', color='white')
+        except Error as e:
+            print(f"Error al crear el administrador: {e}",tag='Warning', tag_color='yellow', color='magenta')
+        finally:
+            cursor.close()
+    
+    def select_all_admin(self):
+        try:
+            cursor = self.connection.cursor()
+            cursor.execute(propiedades.CONSULTA_TODOS_ADMINISTRADORES)
+            return cursor.fetchall()
+        except Error as e:
+            print(f"Error al seleccionar datos: {e}",tag='Error', tag_color='red', color='magenta')
+        finally:
+            cursor.close()
+
+    def start(self):
+        self.connect()
+        self.create_database()
+        self.create_table_usuarios()
+        self.create_table_administradores()
+        self.create_admin_user
+    
+    

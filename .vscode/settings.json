@@ -11,7 +11,8 @@
             "driver": "MySQL",
             "name": "TFG",
             "database": "Eep_Tfg",
-            "username": "root"
+            "username": "root",
+            "askForPassword": true
         }
     ]
 }
