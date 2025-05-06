@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox,Label,PhotoImage
 from src.Conector import Conector
-
+import src.Propiedades as Propiedades
 import tkinter as tk
 from tkinter import messagebox
 from src.Administrador import Administrador
@@ -35,10 +35,10 @@ def loging():
             return
 # Crear ventana
 ventana = tk.Tk()
-ventana.title("Inicio de Sesión")
-ventana.geometry("300x200")
-ventana.configure(bg="#F9F7F7")
-imagen = PhotoImage(file="src/img/logo_sek.png")
+ventana.title(Propiedades.VENTANA_LOGIN_TITULO)
+ventana.geometry(Propiedades.VENTANA_TAMANIO_LOGIN)
+ventana.configure(bg=Propiedades.COLOR_VENTANA_FONDO)
+imagen = PhotoImage(file=Propiedades.IMAGEN_LOGO)
 label = tk.Label(ventana, image=imagen)
 label.pack()
 
