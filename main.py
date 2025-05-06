@@ -1,20 +1,20 @@
-from src.Conector import Conector
+from tkinter import ttk
+import tkinter
 
-con = Conector()
-con.connect()
-con.create_database()
-con.create_table_usuarios()
-con.create_table_administradores()
-con.create_admin_user("admin", "admin")
-lista = con.select_all_admin()
-print("Lista de administradores: ", lista)
-for i in lista:
-    print("Usuario: ", i[0])
-    print("Contraseña: ", i[1])
-    if i[0] == "admin":
-        print("Usuario admin encontrado")
-    else:
-        print("Usuario admin no encontrado")
-       
+root = tkinter.Tk()
 
-con.disconnect()
+style = ttk.Style()
+style.layout("TMenubutton", [
+   ("Menubutton.background", None),
+   ("Menubutton.button", {"children":
+       [("Menubutton.focus", {"children":
+           [("Menubutton.padding", {"children":
+               [("Menubutton.label", {"side": "left", "expand": 1})]
+           })]
+       })]
+   }),
+])
+
+mbtn = ttk.Menubutton(text='Text')
+mbtn.pack()
+root.mainloop()
