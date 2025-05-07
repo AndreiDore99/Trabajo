@@ -3,6 +3,7 @@ import src.Propiedades as Propiedades
 from tkinter import messagebox, Label, PhotoImage
 from src.Conector import Conector
 from src.Administrador import Administrador
+import menu as menu
 
 
 class LoginApp:
@@ -37,9 +38,6 @@ class LoginApp:
         if len(Adm.get_nombre_usuario().strip())==0 or len(Adm.get_contrasena().strip())==0:
             messagebox.showinfo("Error","Error: No se puede tener campos vacíos.")
             raise TypeError("Error: No se puede tener campos vacíos.")
-        
-        
-            
         con = Conector()
         administradores = con.select_all_admin()
         for i in administradores:
@@ -48,6 +46,10 @@ class LoginApp:
 
             if Adm.get_nombre_usuario() == administradores[0][1] and Adm.get_contrasena() == administradores[0][2]:
                 messagebox.showinfo("Inicio de Sesión", "Inicio de sesión exitoso")
+                # Aqui tedria que abrir la ventana de administrador
+                accesomenu = menu.MenuApp()
+                
+                
                 return
             else:
                 messagebox.showerror("Error", "Usuario o contraseña incorrectos")

@@ -81,8 +81,6 @@ class Conector:
             print(f"Error al crear la tabla: {e}",tag='failure', tag_color='red', color='magenta')
 
     def create_admin_user(self, Administrador):
-        if Administrador.get_nombre_usuario() == "" or Administrador.get_contrasena() == "":
-            print("El nombre de usuario y la contraseña no pueden estar vacíos.",tag='Warning', tag_color='yellow', color='magenta') 
         try:
             cursor = self.connection.cursor()            
             sql = propiedades.CREACION_ADMIN
@@ -92,8 +90,7 @@ class Conector:
             print(f"Administrador creado con éxito.",tag='success', tag_color='green', color='white')
         except Error as e:
             print(f"Error al crear el administrador: {e}",tag='Warning', tag_color='yellow', color='magenta')
-      
-           # cursor.close()
+            cursor.close()
    
     def select_all_admin(self):
         try:
