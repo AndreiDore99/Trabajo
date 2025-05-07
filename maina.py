@@ -1,20 +1,10 @@
 import tkinter as tk
-from tkinter import ttk
 from tkinter import messagebox,Label,PhotoImage
 from src.Conector import Conector
 import src.Propiedades as Propiedades
 import tkinter as tk
 from tkinter import messagebox
 from src.Administrador import Administrador
-
-
-def init_app():
-        con = Conector()
-        con.start()
-
-if __name__ == "__main__":
-    init_app()
-
 
 def loging():
     
@@ -36,7 +26,7 @@ def loging():
 # Crear ventana
 ventana = tk.Tk()
 ventana.title(Propiedades.VENTANA_LOGIN_TITULO)
-ventana.geometry(Propiedades.VENTANA_TAMANIO_LOGIN)
+
 ventana.configure(bg=Propiedades.COLOR_VENTANA_FONDO)
 imagen = PhotoImage(file=Propiedades.IMAGEN_LOGO)
 label = tk.Label(ventana, image=imagen)

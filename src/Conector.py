@@ -4,6 +4,8 @@ from mysql.connector import Error
 from src.Administrador import Administrador
 from print_color import print
 
+
+
 # Configuración de la conexión
 class Conector:
     def __init__(self):
@@ -11,7 +13,6 @@ class Conector:
         self.user = propiedades.DB_USER
         self.password = propiedades.DB_PASSWORD
         self.database = propiedades.DB_NAME
-        self.connection = None
 
 # Establecer la conexión
     def connect(self):
@@ -91,8 +92,8 @@ class Conector:
             print(f"Administrador creado con éxito.",tag='success', tag_color='green', color='white')
         except Error as e:
             print(f"Error al crear el administrador: {e}",tag='Warning', tag_color='yellow', color='magenta')
-        finally:
-            cursor.close()
+      
+           # cursor.close()
    
     def select_all_admin(self):
         try:
