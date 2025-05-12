@@ -5,10 +5,11 @@ from src.Conector import Conector
 from src.Administrador import Administrador
 import menu as menu
 
-
+AppLogin = tk.Tk()
 class LoginApp:
+    
     def __init__(self):
-        AppLogin = tk.Tk()
+       
         AppLogin.title(Propiedades.VENTANA_LOGIN_TITULO)
         AppLogin.configure(bg=Propiedades.COLOR_VENTANA_FONDO)
         imagen = PhotoImage(file=Propiedades.IMAGEN_LOGO)
@@ -28,8 +29,9 @@ class LoginApp:
         # Botón para guardar
         btn_guardar = tk.Button(AppLogin, text="Iniciar Sesión", command=self.loging)
         btn_guardar.pack(pady=10)
-
+        
         AppLogin.mainloop()
+        
 
     def loging(self):
         Adm = Administrador(self.entry_usuario.get(), self.entry_contrasena.get())
@@ -47,10 +49,14 @@ class LoginApp:
             if Adm.get_nombre_usuario() == administradores[0][1] and Adm.get_contrasena() == administradores[0][2]:
                 messagebox.showinfo("Inicio de Sesión", "Inicio de sesión exitoso")
                 # Aqui tedria que abrir la ventana de administrador
-                accesomenu = menu.MenuApp()
-                
-                
-                return
+                AppLogin.destroy()
+                accesomenu = menu.MenuApp()          
+                return accesomenu
             else:
                 messagebox.showerror("Error", "Usuario o contraseña incorrectos")
                 return
+            
+    def salir(self):
+        # Lógica para salir de la aplicación
+        messagebox.showinfo("SALIENDO")
+        self.loging.destroy()

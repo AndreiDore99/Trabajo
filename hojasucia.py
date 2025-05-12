@@ -1,20 +1,33 @@
+import tkinter as tk
+from tkinter import ttk
 
-import tkinter as Tkinter
-# Primera ventana con valores positivos
-primer_ventana = Tkinter.Tk()
-primer_ventana.geometry("300x300+0+0")
-# A modo estetico le di un titulo
-primer_ventana.title("Posicion x=+0 y=+0")
-# Este tambien es estetico y no influye en el uso del metodo
-etiqueta = Tkinter.Label(primer_ventana, text="Posicion x=+0 y=+0", width=100, height=100, anchor="center")
-etiqueta.pack()
 
-# Segunda ventana con valores negativos
-segunda_ventana = Tkinter.Tk()
-segunda_ventana.geometry("300x300-0-0")
-segunda_ventana.title("Posicion x=-0 y=-0")
-etiqueta = Tkinter.Label(segunda_ventana, text="Posicion x=-0 y=-0", width=100, height=100, anchor="center")
-etiqueta.pack()
+def abrir_ventana_secundaria():
+    # Crear una ventana secundaria.
+    ventana_secundaria = tk.Toplevel()
+    ventana_secundaria.title("Ventana secundaria")
+    ventana_secundaria.config(width=300, height=200)
+    # Crear un botón dentro de la ventana secundaria
+    # para cerrar la misma.
+    boton_cerrar = ttk.Button(
+        ventana_secundaria,
+        text="Cerrar ventana", 
+        command=ventana_secundaria.destroy
+    )
+    boton_cerrar.place(x=75, y=75)
 
-primer_ventana.mainloop()
-segunda_ventana.mainloop()
+
+# Crear la ventana principal.
+ventana_principal = tk.Tk()
+ventana_principal.config(width=400, height=300)
+ventana_principal.title("Ventana principal")
+# Crear un botón dentro de la ventana principal
+# que al ejecutarse invoca a la función
+# abrir_ventana_secundaria().
+boton_abrir = ttk.Button(
+    ventana_principal,
+    text="Abrir ventana secundaria",
+    command=abrir_ventana_secundaria
+)
+boton_abrir.place(x=100, y=100)
+ventana_principal.mainloop()
