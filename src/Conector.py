@@ -106,6 +106,18 @@ class Conector:
         except mysql.connector.Error as e:
             print(f"Error de base de datos: {e}")
         
+    def create_user(self, Usuario):
+        try:
+            cursor=self.connection.cursor()
+            sql=propiedades.CREACION_USUARIO
+            val=(Usuario.get_nombre_usuario(), Usuario.get_nombre_completo(), Usuario.get_email(), Usuario.get_departamento())
+            cursor.execute(sql, val)
+            self.connection.commit()
+            print(f"Usuario creado con éxito.",tag='success', tag_color='green', color='white')
+        except Error as e:
+            print(f"Error al crear el usuario: {e}",tag='failure', tag_color='red', color='magenta')
+
+
     def check_connection(self):
         if self.connection:
             cursor = self.connection.cursor()

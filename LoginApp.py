@@ -28,8 +28,9 @@ class LoginApp:
 
         # Botón para guardar
         btn_guardar = tk.Button(AppLogin, text="Iniciar Sesión", command=self.loging)
+        btn_salir = tk.Button(AppLogin, text="Salir", command=self.salir)
         btn_guardar.pack(pady=10)
-        
+        btn_salir.pack(pady=10)        
         AppLogin.mainloop()
         
 
@@ -58,5 +59,6 @@ class LoginApp:
             
     def salir(self):
         # Lógica para salir de la aplicación
-        messagebox.showinfo("SALIENDO")
-        self.loging.destroy()
+        messagebox.showinfo("SALIENDO","Gracias por usar la aplicación")
+        AppLogin.destroy()
+        

@@ -1,8 +1,7 @@
-import login as login
+import LoginApp as LoginApp
 import src.Conector as conector
 
 conector = conector.Conector()
 conector.start()
-login = login.LoginApp()
-AppLogin = login.LoginApp()
+AppLogin = LoginApp.LoginApp()
 AppLogin.mainloop()

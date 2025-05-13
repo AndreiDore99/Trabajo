@@ -3,6 +3,7 @@ import src.Propiedades as Propiedades
 from tkinter import messagebox, Label, PhotoImage
 from src.Conector import Conector
 from src.Administrador import Administrador
+from src.Usuario import Usuario  # Importing the Usuario class
 
 class MenuApp:
     def __init__(self):
@@ -16,6 +17,9 @@ class MenuApp:
 
     def crear_usuario(self):
         # Lógica para crear un nuevo usuario
+        user=Usuario("dsandrei", "Verano23","Andrei Sandu","andreimdore@gmail.com", "informatica")
+        con=Conector()
+        con.create_user(user)
         messagebox.showinfo("CREANDO USUARIO")
     def eliminar_usuario(self):
         # Lógica para eliminar un usuario existente
