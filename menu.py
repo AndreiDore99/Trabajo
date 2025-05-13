@@ -17,8 +17,9 @@ class MenuApp:
 
     def crear_usuario(self):
         # Lógica para crear un nuevo usuario
-        user=Usuario("dsandrei", "Verano23","Andrei Sandu","andreimdore@gmail.com", "informatica")
+        user=Usuario("dsandrei","Andrei Sandu","andreimdore@gmail.com","informatica")
         con=Conector()
+        con.connect()
         con.create_user(user)
         messagebox.showinfo("CREANDO USUARIO")
     def eliminar_usuario(self):

@@ -108,10 +108,10 @@ class Conector:
         
     def create_user(self, Usuario):
         try:
-            cursor=self.connection.cursor()
-            sql=propiedades.CREACION_USUARIO
-            val=(Usuario.get_nombre_usuario(), Usuario.get_nombre_completo(), Usuario.get_email(), Usuario.get_departamento())
-            cursor.execute(sql, val)
+            cursor = self.connection.cursor()            
+            sql = propiedades.CREACION_USUARIO
+            val = (Usuario.get_nick(), Usuario.get_nombre(), Usuario.get_correo(),Usuario.get_departamento())
+            cursor.execute(sql,val)
             self.connection.commit()
             print(f"Usuario creado con éxito.",tag='success', tag_color='green', color='white')
         except Error as e:

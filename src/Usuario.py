@@ -1,6 +1,5 @@
 class Usuario:
-    def __init__(self, id,nick,nombre,correo,departamento):
-        self.id = id
+    def __init__(self,nick,nombre,correo,departamento):
         self.nick = nick
         self.nombre = nombre
         self.correo = correo
